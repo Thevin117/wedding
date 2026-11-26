@@ -3596,6 +3596,19 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
               </div>
             </div>
 
+            <!-- Number of Pax -->
+            <div style="margin-bottom:20px; text-align:left;">
+              <label style="font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(184,134,11,0.7); letter-spacing:2px; text-transform:uppercase; display:block; margin-bottom:8px;">Number of Guests (Max 6)</label>
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border:1.5px solid rgba(184,134,11,0.2); border-radius:12px; background:rgba(255,255,255,0.4);">
+                <button type="button" id="pax-minus" onclick="decrementPax()" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">−</button>
+                <div style="text-align:center;">
+                  <div id="pax-count" style="font-family:'Playfair Display',serif; font-size:22px; color:#3a0f14; font-weight:700;">1</div>
+                  <div style="font-family:'Cormorant Garamond',serif; font-size:11px; color:#5c1322; opacity:0.6; letter-spacing:1px; text-transform:uppercase;">Pax</div>
+                </div>
+                <button type="button" id="pax-plus" onclick="incrementPax()" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">+</button>
+              </div>
+            </div>
+
             <!-- Error Message -->
             <div id="rsvp-error" style="display:none; font-family:'Cormorant Garamond',serif; font-size:14px; color:#8b0000; margin-bottom:14px; padding:8px 12px; background:rgba(139,0,0,0.06); border-radius:8px;"></div>
 
@@ -3826,7 +3839,33 @@ class Component extends DCLogic {
 // RSVP State
 var rsvpWedding = false;
 var rsvpDinner = false;
+var rsvpPax = 1;
 var rsvpSubmitting = false;
+
+function updatePaxButtons() {
+  var minusBtn = document.getElementById('pax-minus');
+  var plusBtn = document.getElementById('pax-plus');
+  minusBtn.style.opacity = rsvpPax <= 1 ? '0.3' : '1';
+  minusBtn.style.cursor = rsvpPax <= 1 ? 'default' : 'pointer';
+  plusBtn.style.opacity = rsvpPax >= 6 ? '0.3' : '1';
+  plusBtn.style.cursor = rsvpPax >= 6 ? 'default' : 'pointer';
+}
+
+function incrementPax() {
+  if (rsvpPax >= 6) return;
+  rsvpPax++;
+  document.getElementById('pax-count').textContent = rsvpPax;
+  updatePaxButtons();
+  clearError();
+}
+
+function decrementPax() {
+  if (rsvpPax <= 1) return;
+  rsvpPax--;
+  document.getElementById('pax-count').textContent = rsvpPax;
+  updatePaxButtons();
+  clearError();
+}
 
 function toggleWedding() {
   rsvpWedding = !rsvpWedding;
@@ -3904,7 +3943,7 @@ function handleRsvpSubmit() {
 
   var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzuWCX2IvYNml75eo4f_LQp-eM-gjd03smWMiGyAaUWx2P8wL-IJGzGQYgaOoEs4GDH5Q/exec';
   var ts = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' });
-  var params = '?name=' + encodeURIComponent(name) + '&occasions=' + encodeURIComponent(occasionStr) + '&timestamp=' + encodeURIComponent(ts);
+  var params = '?name=' + encodeURIComponent(name) + '&occasions=' + encodeURIComponent(occasionStr) + '&pax=' + encodeURIComponent(rsvpPax) + '&timestamp=' + encodeURIComponent(ts);
 
   var img = new Image();
   img.onload = img.onerror = function() {
