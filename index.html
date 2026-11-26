@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>S. Arvindran &amp; K. Sandhiya Nair — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Marcellus&family=Noto+Sans+Malayalam:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+/* === RESET === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Cormorant Garamond',serif;background:#1a1a1a;color:#5c1322;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* === SCROLL PROGRESS === */
+[data-scroll-progress]{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#b8860b,#d9ae3f,#e8c771);z-index:9999;width:0;transition:width 0.1s linear}
+
+/* === MUSIC BUTTON === */
+.music-btn{position:fixed;bottom:20px;right:20px;z-index:100;width:48px;height:48px;border-radius:50%;border:2px solid #d9ae3f;background:rgba(255,253,248,0.95);box-shadow:0 4px 20px rgba(184,134,11,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 0.3s, box-shadow 0.3s;backdrop-filter:blur(8px)}
+.music-btn:hover{transform:scale(1.1);box-shadow:0 6px 25px rgba(184,134,11,0.5)}
+.music-btn.playing{animation:pulse 2s ease-in-out infinite}
+
+/* === KEYFRAME ANIMATIONS === */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeSlideLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeSlideRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.6)}to{opacity:1;transform:scale(1)}}
+@keyframes glowPulse{0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:0.7;transform:translate(-50%,-50%) scale(1.15)}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes shimmerSweep{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+@keyframes glow{0%,100%{opacity:0.5;text-shadow:0 0 8px rgba(184,134,11,0.3)}50%{opacity:1;text-shadow:0 0 16px rgba(184,134,11,0.6)}}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(184,134,11,0.4)}50%{transform:scale(1.05);box-shadow:0 0 0 10px rgba(184,134,11,0)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+@keyframes goldDust{0%,100%{opacity:0;transform:translateY(0)}50%{opacity:0.6;transform:translateY(-15px)}}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:0.8}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+@keyframes petalFall{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0.7}25%{transform:translateY(25vh) rotate(90deg) translateX(30px);opacity:0.6}50%{transform:translateY(50vh) rotate(180deg) translateX(-20px);opacity:0.5}75%{transform:translateY(75vh) rotate(270deg) translateX(25px);opacity:0.3}100%{transform:translateY(100vh) rotate(360deg) translateX(-10px);opacity:0}}
+@keyframes sparkleTrail{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0);filter:blur(2px)}}
+@keyframes particle{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:var(--pdir) scale(0)}}
+@keyframes clipReveal{0%{clip-path:inset(0 100% 0 0);opacity:0}100%{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes wordFadeUp{from{opacity:0;transform:translateY(16px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes flicker{0%,100%{transform:scaleY(1) scaleX(1)}25%{transform:scaleY(1.1) scaleX(0.9)}50%{transform:scaleY(0.95) scaleX(1.05)}75%{transform:scaleY(1.08) scaleX(0.92)}}
+@keyframes flameGlow{0%,100%{background:radial-gradient(circle,rgba(255,180,48,0.3) 0%,transparent 70%)}50%{background:radial-gradient(circle,rgba(255,180,48,0.5) 0%,transparent 70%)}}
+@keyframes blessingAppear{from{opacity:0;transform:scale(0.8) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes sealFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes sealGlow{0%,100%{box-shadow:0 8px 32px rgba(184,134,11,0.3), 0 0 0 0 rgba(217,174,63,0)}50%{box-shadow:0 12px 40px rgba(184,134,11,0.5), 0 0 20px 4px rgba(217,174,63,0.15)}}
+@keyframes flapOpen{0%{transform:rotateX(0deg)}100%{transform:rotateX(180deg)}}
+@keyframes envelopeSlide{0%{transform:translateY(0)}100%{transform:translateY(30px)}}
+
+/* === SCROLL REVEAL === */
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
+[data-reveal].revealed{opacity:1;transform:translateY(0)}
+[data-reveal][data-delay="1"]{transition-delay:0.15s}
+[data-reveal][data-delay="2"]{transition-delay:0.3s}
+[data-reveal][data-delay="3"]{transition-delay:0.45s}
+
+/* === MOBILE RESPONSIVE === */
+@media(max-width:600px){
+  .hero-name{font-size:clamp(28px,7vw,36px)!important}
+  .countdown-grid{gap:10px!important}
+  .countdown-box{padding:16px 6px!important;border-radius:12px!important}
+  .countdown-num{font-size:26px!important}
+  .countdown-label{font-size:9px!important;letter-spacing:1.5px!important}
+  .info-grid{grid-template-columns:repeat(3,1fr)!important;gap:10px!important}
+  .info-card{padding:18px 6px!important;border-radius:12px!important}
+  .info-icon{font-size:26px!important}
+  .info-label{font-size:10px!important;letter-spacing:1.5px!important}
+  .event-card{padding:20px 16px!important}
+  .peacock-bl,.peacock-br{width:50px!important;height:50px!important}
+  .closing-text{font-size:18px!important}
+  .closing-mal{font-size:15px!important}
+  .rsvp-title{font-size:24px!important}
+  .rsvp-form{padding:22px 18px!important}
+}
+
+/* === ENVELOPE === */
+.envelope-view{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(165deg,#fffdf8 0%,#f8f1de 25%,#f4edd6 50%,#f0e6cc 75%,#ecdfc0 100%);position:relative;overflow:hidden}
+.envelope-wrap{position:relative;width:min(320px,85vw);cursor:pointer}
+.envelope-body{background:linear-gradient(145deg,#f8f1de,#f0e6cc);border:2px solid #d9ae3f;border-radius:0 0 20px 20px;padding:60px 30px 40px;text-align:center;position:relative;z-index:2;box-shadow:0 15px 50px rgba(184,134,11,0.2),inset 0 2px 0 rgba(255,255,255,0.5)}
+.envelope-flap{position:absolute;top:0;left:0;right:0;height:0;border-left:calc(min(320px,85vw)/2) solid transparent;border-right:calc(min(320px,85vw)/2) solid transparent;border-top:100px solid #e8dab5;z-index:3;transform-origin:top center;transition:transform 0.6s ease-in-out;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1))}
+.envelope-flap.open{transform:rotateX(180deg)}
+.seal-container{position:absolute;top:-20px;left:50%;transform:translateX(-50%);z-index:5}
+.wax-seal{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9302c,#8b0000 60%,#6d0000);box-shadow:0 8px 32px rgba(184,134,11,0.3),inset 0 2px 4px rgba(255,255,255,0.2),inset 0 -2px 4px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;animation:sealFloat 3s ease-in-out infinite,sealGlow 3s ease-in-out infinite;transition:transform 0.3s}
+.wax-seal:hover{transform:scale(1.08)}
+.seal-letter{font-family:'Playfair Display',serif;font-size:28px;color:rgba(255,215,0,0.9);font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,0.3)}
+.breaking .wax-seal{animation:none;transform:scale(1.2);opacity:0;transition:all 0.4s ease-out}
+
+/* === INVITATION WRAPPER === */
+.invitation-view{display:none;max-width:600px;margin:0 auto;position:relative;overflow:hidden;background:#fffdf8}
+.invitation-view.show{display:block}
+
+/* === PETAL CONTAINER === */
+.petal-container{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+
+/* === SECTION DIVIDER === */
+.section-divider{height:6px;position:relative;overflow:hidden}
+.section-divider .bar{position:absolute;inset:0;background:linear-gradient(90deg,transparent 2%,rgba(92,19,34,0.3) 15%,rgba(122,30,46,0.5) 30%,rgba(217,174,63,0.7) 50%,rgba(122,30,46,0.5) 70%,rgba(92,19,34,0.3) 85%,transparent 98%)}
+.section-divider .shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent 20%,rgba(255,248,220,0.6) 45%,rgba(232,199,113,0.4) 55%,transparent 80%);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite}
+
+/* === EXPANDABLE PANELS === */
+.expand-panel{display:none;margin-top:20px;flex-direction:column;gap:8px;width:min(360px,90vw)}
+.expand-panel.show{display:flex}
+.expand-link{text-decoration:none;background:#fffdf8;border:1px solid #e3c98a;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(184,134,11,0.06);transition:box-shadow 0.3s}
+.expand-link:hover{box-shadow:0 4px 16px rgba(184,134,11,0.15)}
+.expand-icon{width:38px;height:38px;background:linear-gradient(135deg,#b8860b,#d9ae3f);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div data-scroll-progress></div>
+
+<!-- Music button (shown after envelope opens) -->
+<button class="music-btn" id="musicBtn" style="display:none" onclick="toggleMute()">
+  <span id="musicIcon">🔊</span>
+</button>
+
+<!-- Petal container -->
+<div class="petal-container" id="petalContainer"></div>
+
+<!-- Blessing overlay -->
+<div id="blessingOverlay" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);z-index:100">
+  <div style="background:linear-gradient(145deg,#fffdf8,#faf5ea);border:2px solid #d9ae3f;border-radius:20px;padding:40px 30px;text-align:center;max-width:300px;animation:blessingAppear 0.6s ease-out both;box-shadow:0 20px 60px rgba(184,134,11,0.3)">
+    <div style="font-size:40px;margin-bottom:16px">🙏</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;color:#5c1322;font-weight:700">Blessing</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#7a4f1c;margin-top:8px;line-height:1.6">May this union be blessed with eternal love, joy, and togetherness.</div>
+    <div style="font-family:'Noto Sans Malayalam',serif;font-size:14px;color:#b8860b;margin-top:12px;font-weight:700">ശുഭാശംസകള്</div>
+  </div>
+</div>
+
+<!-- ==================== ENVELOPE ==================== -->
+<div class="envelope-view" id="envelopeView">
+  <!-- background decorations -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(184,134,11,0.06) 100%);pointer-events:none"></div>
+  <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.2);border-radius:6px;pointer-events:none"></div>
+  <div style="position:absolute;top:20%;left:50%;width:200px;height:200px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(217,174,63,0.15) 0%,transparent 70%);pointer-events:none"></div>
+
+  <div style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#b8860b;margin-bottom:30px;animation:fadeSlideUp 0.8s ease-out both">Wedding Invitation</div>
+
+  <div class="envelope-wrap" onclick="handleOpen()">
+    <div class="envelope-flap" id="envelopeFlap"></div>
+    <div class="seal-container" id="sealContainer">
+      <div class="wax-seal" id="waxSeal">
+        <span class="seal-letter">A&S</span>
+      </div>
+      <!-- particles container -->
+      <div id="particlesContainer" style="position:absolute;inset:0;pointer-events:none"></div>
+    </div>
+    <div class="envelope-body">
+      <div style="font-family:'Noto Sans Malayalam',serif;font-size:14px;color:#b8860b;font-weight:700;letter-spacing:2px">ശ്രീ</div>
+      <div style="font-family:'Playfair Display',serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#9a7a2e;margin:8px 0 12px">You are invited to</div>
+      <div style="font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:#5c1322;font-style:italic">S. Arvindran</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;color:#b8860b;margin:4px 0;font-style:italic">&amp;</div>
+      <div style="font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:#5c1322;font-style:italic">K. Sandhiya Nair</div>
+      <div style="margin-top:14px;font-size:14px;color:#7a4f1c;font-family:'Cormorant Garamond',serif;font-style:italic">13 December 2026</div>
+    </div>
+  </div>
+
+  <div style="margin-top:30px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#9a7a2e;animation:glow 2s ease-in-out infinite">Tap the seal to open</div>
+</div>
+
+<!-- ==================== INVITATION ==================== -->
+<div class="invitation-view" id="invitationView">
+
+  <!-- confetti container -->
+  <div id="confettiContainer" style="position:absolute;inset:0;pointer-events:none;z-index:4;overflow:hidden"></div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <div data-s="hero" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(170deg,#fffdf8 0%,#f8f1de 25%,#f4edd6 50%,#f0e6cc 75%,#ecdfc0 100%);padding:40px 20px 30px;text-align:center;position:relative;overflow:hidden">
+    <!-- decorations -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(184,134,11,0.06) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.2);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:14px;border:1px solid rgba(184,134,11,0.1);border-radius:4px;pointer-events:none"></div>
+
+    <!-- garlands -->
+    <div style="position:absolute;top:-5px;left:0;right:0;height:60px;pointer-events:none;overflow:hidden">
+      <img src="./assets/garlands-cropped.png" style="width:100%;height:100%;object-fit:cover;object-position:top;mix-blend-mode:multiply;opacity:0.25" alt="">
+    </div>
+
+    <!-- mandala -->
+    <svg viewBox="0 0 200 200" style="position:absolute;top:50%;left:50%;width:280px;height:280px;transform:translate(-50%,-50%);opacity:0.04;pointer-events:none">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#b8860b" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#b8860b" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="50" fill="none" stroke="#b8860b" stroke-width="0.3"/>
+      <g stroke="#b8860b" stroke-width="0.5" fill="none">
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(45,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(90,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(135,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(180,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(225,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(270,100,100)"/>
+        <path d="M100,10 Q130,50 100,100 Q70,50 100,10" transform="rotate(315,100,100)"/>
+      </g>
+    </svg>
+
+    <!-- corner filigree -->
+    <svg viewBox="0 0 80 80" style="position:absolute;top:16px;left:16px;width:60px;height:60px;opacity:0.15;pointer-events:none"><path d="M0,80 Q0,0 80,0" fill="none" stroke="#b8860b" stroke-width="1.5"/><path d="M0,60 Q0,15 60,0" fill="none" stroke="#b8860b" stroke-width="0.8"/><path d="M0,40 Q5,25 40,0" fill="none" stroke="#b8860b" stroke-width="0.5"/><circle cx="5" cy="5" r="2" fill="#d9ae3f" opacity="0.5"/></svg>
+    <svg viewBox="0 0 80 80" style="position:absolute;top:16px;right:16px;width:60px;height:60px;opacity:0.15;pointer-events:none;transform:scaleX(-1)"><path d="M0,80 Q0,0 80,0" fill="none" stroke="#b8860b" stroke-width="1.5"/><path d="M0,60 Q0,15 60,0" fill="none" stroke="#b8860b" stroke-width="0.8"/><path d="M0,40 Q5,25 40,0" fill="none" stroke="#b8860b" stroke-width="0.5"/><circle cx="5" cy="5" r="2" fill="#d9ae3f" opacity="0.5"/></svg>
+
+    <!-- hero glow -->
+    <div style="position:absolute;top:28%;left:50%;width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(217,174,63,0.25) 0%,rgba(184,134,11,0.1) 40%,transparent 70%);animation:glowPulse 3s ease-in-out infinite;pointer-events:none;z-index:2"></div>
+
+    <!-- Ganesha -->
+    <img src="./assets/lord.jpeg" class="ganesha-hero" style="position:relative;z-index:3;width:120px;height:120px;object-fit:contain;mix-blend-mode:multiply;pointer-events:none;margin-bottom:-8px;animation:scaleIn 1s ease-out 1.0s both" alt="">
+
+    <div style="z-index:3;display:flex;flex-direction:column;align-items:center">
+      <div style="font-family:'Noto Sans Malayalam',serif;font-size:20px;color:#b8860b;font-weight:700;letter-spacing:3px;text-shadow:0 1px 4px rgba(184,134,11,0.2);animation:wordFadeUp 1s ease-out 1.5s both">ശ്രീ</div>
+
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px;animation:wordFadeUp 1s ease-out 2.0s both">
+        <svg viewBox="0 0 28 20" style="width:22px;height:16px;flex-shrink:0"><g fill="#d9ae3f" opacity="0.7"><ellipse cx="14" cy="14" rx="4" ry="8" transform="rotate(-30 14 14)"/><ellipse cx="14" cy="14" rx="4" ry="8"/><ellipse cx="14" cy="14" rx="4" ry="8" transform="rotate(30 14 14)"/><circle cx="14" cy="12" r="2.5" fill="#e8c771"/></g></svg>
+        <span style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:6px;text-transform:uppercase;color:#7a4f1c">Wedding Invitation</span>
+        <svg viewBox="0 0 28 20" style="width:22px;height:16px;flex-shrink:0"><g fill="#d9ae3f" opacity="0.7"><ellipse cx="14" cy="14" rx="4" ry="8" transform="rotate(-30 14 14)"/><ellipse cx="14" cy="14" rx="4" ry="8"/><ellipse cx="14" cy="14" rx="4" ry="8" transform="rotate(30 14 14)"/><circle cx="14" cy="12" r="2.5" fill="#e8c771"/></g></svg>
+      </div>
+
+      <!-- ornate divider -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:24px 0 10px;animation:wordFadeUp 0.8s ease-out 2.5s both">
+        <span style="width:50px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span>
+        <span style="width:8px;height:8px;border:1.5px solid #b8860b;border-radius:50%"></span>
+        <span style="width:50px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span>
+      </div>
+
+      <!-- Names -->
+      <div style="position:relative">
+        <div class="hero-name" style="font-family:'EB Garamond',serif;font-weight:600;font-style:italic;font-size:clamp(32px,8vw,42px);letter-spacing:0.5px;color:#5c1322;text-shadow:0 2px 8px rgba(92,19,34,0.1);animation:clipReveal 1.5s ease-out 3.0s both">S. Arvindran</div>
+        <div style="position:absolute;top:0;width:60%;height:100%;background:linear-gradient(105deg,transparent 20%,rgba(217,174,63,0.3) 45%,rgba(232,199,113,0.15) 55%,transparent 80%);pointer-events:none;animation:shimmerSweep 2s ease-in-out 5.0s both"></div>
+      </div>
+
+      <!-- & with diyas -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:12px 0;animation:wordFadeUp 0.8s ease-out 4.2s both">
+        <div style="display:flex;align-items:flex-end;justify-content:center;position:relative;width:24px;height:26px">
+          <div style="position:absolute;bottom:4px;width:14px;height:14px;border-radius:50%;animation:flameGlow 2s ease-in-out infinite;z-index:0"></div>
+          <div style="position:absolute;bottom:5px;width:8px;height:15px;background:radial-gradient(ellipse at 50% 80%,#fff4a0,#ffb830 40%,#e87800 75%,transparent);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:flicker 1.5s ease-in-out infinite;transform-origin:bottom center;z-index:0"></div>
+          <svg viewBox="0 0 24 14" style="width:22px;height:12px;position:absolute;bottom:0;z-index:1"><path d="M2,4 Q2,0 6,0 L18,0 Q22,0 22,4 L20,12 Q12,14 4,12 Z" fill="url(#lg1)" stroke="#9a7310" stroke-width="0.5"/><defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c771"/><stop offset="100%" stop-color="#b8860b"/></linearGradient></defs></svg>
+        </div>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#d9ae3f);max-width:40px"></span>
+        <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:24px;color:#b8860b;text-shadow:0 1px 3px rgba(184,134,11,0.2)">&amp;</span>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,#d9ae3f,transparent);max-width:40px"></span>
+        <div style="display:flex;align-items:flex-end;justify-content:center;position:relative;width:24px;height:26px">
+          <div style="position:absolute;bottom:4px;width:14px;height:14px;border-radius:50%;animation:flameGlow 2s ease-in-out 0.3s infinite;z-index:0"></div>
+          <div style="position:absolute;bottom:5px;width:8px;height:15px;background:radial-gradient(ellipse at 50% 80%,#fff4a0,#ffb830 40%,#e87800 75%,transparent);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:flicker 1.5s ease-in-out 0.3s infinite;transform-origin:bottom center;z-index:0"></div>
+          <svg viewBox="0 0 24 14" style="width:22px;height:12px;position:absolute;bottom:0;z-index:1"><path d="M2,4 Q2,0 6,0 L18,0 Q22,0 22,4 L20,12 Q12,14 4,12 Z" fill="url(#lg2)" stroke="#9a7310" stroke-width="0.5"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c771"/><stop offset="100%" stop-color="#b8860b"/></linearGradient></defs></svg>
+        </div>
+      </div>
+
+      <div style="position:relative">
+        <div class="hero-name" style="font-family:'EB Garamond',serif;font-weight:600;font-style:italic;font-size:clamp(32px,8vw,42px);letter-spacing:0.5px;color:#5c1322;text-shadow:0 2px 8px rgba(92,19,34,0.1);animation:clipReveal 1.5s ease-out 4.8s both">K. Sandhiya Nair</div>
+        <div style="position:absolute;top:0;width:60%;height:100%;background:linear-gradient(105deg,transparent 20%,rgba(217,174,63,0.3) 45%,rgba(232,199,113,0.15) 55%,transparent 80%);pointer-events:none;animation:shimmerSweep 2s ease-in-out 6.5s both"></div>
+      </div>
+
+      <div style="margin-top:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#7a4f1c;line-height:1.7;letter-spacing:0.5px;animation:wordFadeUp 1s ease-out 6.5s both">Two souls, one beautiful journey.</div>
+
+      <div style="display:flex;align-items:center;gap:6px;margin:22px 0 0;animation:wordFadeUp 0.8s ease-out 7.2s both">
+        <span style="width:35px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span>
+        <span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span>
+        <span style="width:6px;height:6px;border:1px solid #b8860b;border-radius:50%"></span>
+        <span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span>
+        <span style="width:35px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span>
+      </div>
+
+      <div style="margin-top:18px;text-align:center">
+        <div style="font-family:'Marcellus',serif;font-size:17px;color:#5c1322;font-weight:400;letter-spacing:2px;text-transform:uppercase;animation:wordFadeUp 1s ease-out 7.8s both">Sunday, 13 December 2026</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#7a4f1c;margin-top:6px;letter-spacing:0.5px;animation:wordFadeUp 1s ease-out 8.3s both">10:00 a.m. · Parish Hall, Sungai Petani</div>
+      </div>
+    </div>
+
+    <!-- peacock bottom corners -->
+    <img src="./assets/peacock-corner.png" class="peacock-bl" style="position:absolute;bottom:12px;left:12px;width:70px;height:70px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;z-index:3;animation:fadeSlideLeft 1s ease-out 1.8s both" alt="">
+    <img src="./assets/peacock-corner.png" class="peacock-br" style="position:absolute;bottom:12px;right:12px;width:70px;height:70px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scaleX(-1);z-index:3;animation:fadeSlideRight 1s ease-out 1.8s both" alt="">
+
+    <div style="margin-top:20px;font-size:22px;color:#b8860b;animation:glow 2s ease-in-out infinite;z-index:3;margin-bottom:20px">↓</div>
+  </div>
+
+  <div class="section-divider"><div class="bar"></div><div class="shimmer"></div></div>
+
+  <!-- ===== COUNTDOWN ===== -->
+  <div data-s="countdown" style="min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(170deg,#f8f1de 0%,#fffdf8 30%,#faf6ec 60%,#f4edd6 100%);padding:60px 24px;text-align:center;position:relative;overflow:hidden">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;left:10px;width:90px;height:90px;object-fit:contain;mix-blend-mode:multiply;opacity:0.4;pointer-events:none" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;right:10px;width:90px;height:90px;object-fit:contain;mix-blend-mode:multiply;opacity:0.4;pointer-events:none;transform:scaleX(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;left:10px;width:90px;height:90px;object-fit:contain;mix-blend-mode:multiply;opacity:0.4;pointer-events:none;transform:scaleY(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;right:10px;width:90px;height:90px;object-fit:contain;mix-blend-mode:multiply;opacity:0.4;pointer-events:none;transform:scale(-1,-1)" alt="">
+    <img src="./assets/ganesha.png" style="position:absolute;top:50%;left:50%;width:200px;height:200px;transform:translate(-50%,-50%);object-fit:contain;mix-blend-mode:multiply;opacity:0.05;pointer-events:none" alt="">
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.25);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:14px;border:1px solid rgba(184,134,11,0.15);border-radius:4px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,248,220,0.3) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 4s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(184,134,11,0.06) 100%);pointer-events:none"></div>
+    <div style="position:absolute;top:30%;left:20%;width:3px;height:3px;background:#d9ae3f;border-radius:50%;animation:goldDust 5s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;top:50%;right:15%;width:4px;height:4px;background:#b8860b;border-radius:50%;animation:goldDust 4s ease-in-out 1.5s infinite;pointer-events:none"></div>
+    <div style="position:absolute;top:70%;left:30%;width:3px;height:3px;background:#e8c771;border-radius:50%;animation:goldDust 5.5s ease-in-out 2.5s infinite;pointer-events:none"></div>
+
+    <div style="z-index:1;display:flex;flex-direction:column;align-items:center">
+      <div data-reveal style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:#7a4f1c">Counting Down To</div>
+      <div data-reveal data-delay="1" style="font-family:'Playfair Display',serif;font-size:clamp(28px,7vw,36px);color:#b8860b;font-weight:700;margin-top:6px;text-shadow:0 2px 6px rgba(184,134,11,0.15)">Forever</div>
+
+      <div style="display:flex;align-items:center;gap:6px;margin:20px 0;animation:fadeSlideUp 0.6s ease-out 0.3s both">
+        <span style="width:45px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span>
+        <span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span>
+        <span style="width:6px;height:6px;border:1px solid #b8860b;border-radius:50%"></span>
+        <span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span>
+        <span style="width:45px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span>
+      </div>
+
+      <div data-reveal data-delay="2" class="countdown-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:min(360px,88vw);max-width:100%;margin-top:10px">
+        <div class="countdown-box" style="background:linear-gradient(145deg,#9a7310,#b8860b 30%,#d9ae3f 70%,#e8c771);border-radius:16px;padding:22px 8px;box-shadow:0 10px 30px rgba(184,134,11,0.3),inset 0 1px 0 rgba(255,255,255,0.4),inset 0 -1px 0 rgba(0,0,0,0.1);animation:breathe 3s ease-in-out infinite;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.15) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite;pointer-events:none"></div>
+          <div class="countdown-num" id="cdDays" style="color:#fffdf8;font-size:32px;font-weight:700;font-family:'Playfair Display',serif;text-shadow:0 2px 4px rgba(0,0,0,0.2);position:relative">--</div>
+          <div class="countdown-label" style="color:rgba(255,253,248,0.9);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;position:relative">Days</div>
+        </div>
+        <div class="countdown-box" style="background:linear-gradient(145deg,#9a7310,#b8860b 30%,#d9ae3f 70%,#e8c771);border-radius:16px;padding:22px 8px;box-shadow:0 10px 30px rgba(184,134,11,0.3),inset 0 1px 0 rgba(255,255,255,0.4),inset 0 -1px 0 rgba(0,0,0,0.1);animation:breathe 3s ease-in-out 0.5s infinite;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.15) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 3s ease-in-out 0.5s infinite;pointer-events:none"></div>
+          <div class="countdown-num" id="cdHours" style="color:#fffdf8;font-size:32px;font-weight:700;font-family:'Playfair Display',serif;text-shadow:0 2px 4px rgba(0,0,0,0.2);position:relative">--</div>
+          <div class="countdown-label" style="color:rgba(255,253,248,0.9);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;position:relative">Hours</div>
+        </div>
+        <div class="countdown-box" style="background:linear-gradient(145deg,#9a7310,#b8860b 30%,#d9ae3f 70%,#e8c771);border-radius:16px;padding:22px 8px;box-shadow:0 10px 30px rgba(184,134,11,0.3),inset 0 1px 0 rgba(255,255,255,0.4),inset 0 -1px 0 rgba(0,0,0,0.1);animation:breathe 3s ease-in-out 1s infinite;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.15) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 3s ease-in-out 1s infinite;pointer-events:none"></div>
+          <div class="countdown-num" id="cdMins" style="color:#fffdf8;font-size:32px;font-weight:700;font-family:'Playfair Display',serif;text-shadow:0 2px 4px rgba(0,0,0,0.2);position:relative">--</div>
+          <div class="countdown-label" style="color:rgba(255,253,248,0.9);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;position:relative">Min</div>
+        </div>
+        <div class="countdown-box" style="background:linear-gradient(145deg,#9a7310,#b8860b 30%,#d9ae3f 70%,#e8c771);border-radius:16px;padding:22px 8px;box-shadow:0 10px 30px rgba(184,134,11,0.3),inset 0 1px 0 rgba(255,255,255,0.4),inset 0 -1px 0 rgba(0,0,0,0.1);animation:breathe 3s ease-in-out 1.5s infinite;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.15) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 3s ease-in-out 1.5s infinite;pointer-events:none"></div>
+          <div class="countdown-num" id="cdSecs" style="color:#fffdf8;font-size:32px;font-weight:700;font-family:'Playfair Display',serif;text-shadow:0 2px 4px rgba(0,0,0,0.2);position:relative">--</div>
+          <div class="countdown-label" style="color:rgba(255,253,248,0.9);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:6px;position:relative">Sec</div>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="3" style="margin-top:28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#9a7a2e;letter-spacing:0.5px">Every moment brings us closer to our forever.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"><div class="bar"></div><div class="shimmer"></div></div>
+
+  <!-- ===== TIMELINE ===== -->
+  <div data-s="timeline" style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(175deg,#fffdf8 0%,#f8f1de 35%,#faf6ec 65%,#fffdf8 100%);padding:50px 24px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:0.04;background:repeating-linear-gradient(0deg,transparent,transparent 7px,#b8860b 7px,#b8860b 8px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,248,220,0.3) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 4s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.25);border-radius:6px;pointer-events:none"></div>
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;left:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;right:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scaleX(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;left:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scaleY(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;right:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scale(-1,-1)" alt="">
+    <img src="./assets/ganesha.png" style="position:absolute;top:50%;left:50%;width:180px;height:180px;transform:translate(-50%,-50%);object-fit:contain;mix-blend-mode:multiply;opacity:0.04;pointer-events:none" alt="">
+    <div style="position:absolute;top:-10px;left:0;right:0;height:100px;pointer-events:none;overflow:hidden"><img src="./assets/garlands-cropped.png" style="width:100%;height:100%;object-fit:cover;object-position:top;mix-blend-mode:multiply;opacity:0.15" alt=""></div>
+
+    <!-- peacock feather unfurl -->
+    <svg viewBox="0 0 80 400" style="position:absolute;right:15px;top:8%;height:84%;width:40px;pointer-events:none;opacity:0.1;z-index:0">
+      <path data-feather-draw d="M40,10 C40,60 25,100 22,150 C18,200 35,230 40,260 C45,290 50,330 45,370 C42,390 40,395 40,400" fill="none" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="600" stroke-dashoffset="600" stroke-linecap="round"/>
+      <ellipse data-feather-draw cx="40" cy="240" rx="18" ry="28" fill="none" stroke="#d9ae3f" stroke-width="0.8" stroke-dasharray="200" stroke-dashoffset="200"/>
+      <circle data-feather-draw cx="40" cy="235" r="5" fill="none" stroke="#b8860b" stroke-width="0.6" stroke-dasharray="50" stroke-dashoffset="50"/>
+    </svg>
+
+    <div style="z-index:1;display:flex;flex-direction:column;align-items:center;width:100%">
+      <div data-reveal style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:#7a4f1c">Our Celebrations</div>
+      <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px"><span style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span><span style="width:6px;height:6px;background:#b8860b;border-radius:50%"></span><span style="width:40px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span></div>
+      <div data-reveal style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#9a7a2e;margin-bottom:24px">We would be honoured by your gracious presence.</div>
+
+      <div class="timeline-wrap" style="position:relative;width:min(380px,90vw);max-width:100%;padding-left:32px;min-width:0">
+        <div style="position:absolute;left:11px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,#b8860b 15%,#d9ae3f 50%,#b8860b 85%,transparent);border-radius:2px"></div>
+        <div style="position:absolute;left:11px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent 40%,rgba(255,248,220,0.6) 50%,transparent 60%);background-size:100% 200%;animation:shimmer 3s ease-in-out infinite;border-radius:2px;pointer-events:none"></div>
+
+        <!-- Wedding -->
+        <div style="position:relative;margin-bottom:24px">
+          <div style="position:absolute;left:-27px;top:18px;width:18px;height:18px;background:linear-gradient(135deg,#b8860b,#e8c771);border-radius:50%;border:3px solid #fffdf8;box-shadow:0 0 0 2px #b8860b,0 0 12px rgba(184,134,11,0.4);animation:pulse 2.5s ease-in-out infinite"></div>
+          <div data-reveal data-delay="1" class="event-card" style="background:linear-gradient(145deg,#fffdf8,#faf5ea);border:1.5px solid #d9ae3f;border-radius:14px;padding:24px 22px;text-align:left;box-shadow:0 6px 24px rgba(184,134,11,0.12),0 1px 0 rgba(184,134,11,0.08) inset;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8860b 20%,#d9ae3f 50%,#b8860b 80%,transparent)"></div>
+            <div style="font-family:'Playfair Display',serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700">Wedding Ceremony</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;color:#5c1322;font-weight:700;margin-top:10px">Sunday, 13 December 2026</div>
+            <div style="color:#7a4f1c;font-size:14px;margin-top:5px">10:00 a.m. – 11:30 a.m.</div>
+            <div style="margin:14px 0;display:flex;align-items:center;gap:4px"><span style="width:20px;height:1px;background:linear-gradient(90deg,#b8860b,#d9ae3f)"></span><span style="width:3px;height:3px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:20px;height:1px;background:linear-gradient(90deg,#d9ae3f,transparent)"></span></div>
+            <div style="color:#6b5b3e;font-size:13px;line-height:1.6">Parish Hall, No.115, Jalan Kolam Air,<br>08000 Sungai Petani, Kedah</div>
+            <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+              <a href="https://www.google.com/maps/search/?api=1&query=Parish%20Hall%2C%20No.115%2C%20Jalan%20Kolam%20Air%2C%2008000%20Sungai%20Petani%2C%20Kedah" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fffdf8;font-size:12px;font-weight:600;text-decoration:none;background:linear-gradient(135deg,#9a7310,#b8860b,#d9ae3f);padding:9px 18px;border-radius:20px;box-shadow:0 3px 10px rgba(184,134,11,0.25)">📍 Map</a>
+              <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony+-+Arvindran+%26+Sandhiya&dates=20261213T020000Z/20261213T033000Z&details=Wedding+Ceremony+of+S.+Arvindran+%26+K.+Sandhiya+Nair&location=Parish+Hall,+No.115,+Jalan+Kolam+Air,+08000+Sungai+Petani,+Kedah" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fffdf8;font-size:12px;font-weight:600;text-decoration:none;background:linear-gradient(135deg,#9a7310,#b8860b,#d9ae3f);padding:9px 18px;border-radius:20px;box-shadow:0 3px 10px rgba(184,134,11,0.25)">📅 Calendar</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="position:relative;margin-bottom:24px;text-align:center;padding-left:10px"><div data-reveal data-delay="2" style="display:flex;align-items:center;justify-content:center;gap:8px"><span style="width:24px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#9a7a2e;letter-spacing:1px">Followed by</span><span style="width:24px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span></div></div>
+
+        <!-- Dinner -->
+        <div style="position:relative">
+          <div style="position:absolute;left:-27px;top:18px;width:18px;height:18px;background:linear-gradient(135deg,#b8860b,#e8c771);border-radius:50%;border:3px solid #fffdf8;box-shadow:0 0 0 2px #b8860b,0 0 12px rgba(184,134,11,0.4);animation:pulse 2.5s ease-in-out 0.5s infinite"></div>
+          <div data-reveal data-delay="3" class="event-card" style="background:linear-gradient(145deg,#fffdf8,#faf5ea);border:1.5px solid #d9ae3f;border-radius:14px;padding:24px 22px;text-align:left;box-shadow:0 6px 24px rgba(184,134,11,0.12),0 1px 0 rgba(184,134,11,0.08) inset;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8860b 20%,#d9ae3f 50%,#b8860b 80%,transparent)"></div>
+            <div style="font-family:'Playfair Display',serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700">Dinner Reception (Bridegroom)</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;color:#5c1322;font-weight:700;margin-top:10px">Saturday, 19 December 2026</div>
+            <div style="color:#7a4f1c;font-size:14px;margin-top:5px">7:30 p.m. onwards</div>
+            <div style="margin:14px 0;display:flex;align-items:center;gap:4px"><span style="width:20px;height:1px;background:linear-gradient(90deg,#b8860b,#d9ae3f)"></span><span style="width:3px;height:3px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:20px;height:1px;background:linear-gradient(90deg,#d9ae3f,transparent)"></span></div>
+            <div style="color:#6b5b3e;font-size:13px;line-height:1.6">Kelantan Chinese Chamber of Commerce,<br>No.5429, Jalan Kebun Sultan,<br>15300 Kota Bharu, Kelantan</div>
+            <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+              <a href="https://www.google.com/maps/search/?api=1&query=Kelantan%20Chinese%20Chamber%20of%20Commerce%2C%20No.5429%2C%20Jalan%20Kebun%20Sultan%2C%2015300%20Kota%20Bharu%2C%20Kelantan" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fffdf8;font-size:12px;font-weight:600;text-decoration:none;background:linear-gradient(135deg,#9a7310,#b8860b,#d9ae3f);padding:9px 18px;border-radius:20px;box-shadow:0 3px 10px rgba(184,134,11,0.25)">📍 Map</a>
+              <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Dinner+Reception+-+Arvindran+%26+Sandhiya&dates=20261219T113000Z/20261220T013000Z&details=Dinner+Reception+(Bridegroom)+for+S.+Arvindran+%26+K.+Sandhiya+Nair&location=Kelantan+Chinese+Chamber+of+Commerce,+No.5429,+Jalan+Kebun+Sultan,+15300+Kota+Bharu,+Kelantan" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#fffdf8;font-size:12px;font-weight:600;text-decoration:none;background:linear-gradient(135deg,#9a7310,#b8860b,#d9ae3f);padding:9px 18px;border-radius:20px;box-shadow:0 3px 10px rgba(184,134,11,0.25)">📅 Calendar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><div class="bar"></div><div class="shimmer"></div></div>
+
+  <!-- ===== INFO ===== -->
+  <div data-s="info" style="min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(168deg,#fffdf8 0%,#faf6ec 40%,#f4edd6 100%);padding:50px 24px;text-align:center;position:relative;overflow:hidden">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;left:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:10px;right:10px;width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none;transform:scaleX(-1)" alt="">
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.25);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,248,220,0.3) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 4s ease-in-out infinite;pointer-events:none"></div>
+
+    <div style="z-index:1;display:flex;flex-direction:column;align-items:center">
+      <div data-reveal style="font-family:'Noto Sans Malayalam',serif;font-size:14px;color:#b8860b;letter-spacing:2px">കൂടുതല്‍ · MORE</div>
+      <div data-reveal data-delay="1" style="font-family:'Playfair Display',serif;font-size:clamp(22px,6vw,28px);color:#5c1322;font-weight:700;font-style:italic;margin-top:6px">More Information</div>
+      <div style="display:flex;align-items:center;gap:8px;margin:18px 0 24px"><span style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span><span style="width:6px;height:6px;background:#b8860b;border-radius:50%"></span><span style="width:40px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span></div>
+
+      <div class="info-grid" data-reveal data-delay="2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:min(370px,90vw);max-width:100%">
+        <div onclick="togglePanel('calendar')" class="info-card" style="cursor:pointer;background:linear-gradient(145deg,#fffdf8,#faf5ea);border:1.5px solid #d9ae3f;border-radius:14px;padding:24px 8px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 6px 20px rgba(184,134,11,0.12);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8860b,#d9ae3f,#b8860b,transparent)"></div>
+          <span class="info-icon" style="font-size:32px;position:relative">📅</span>
+          <span class="info-label" style="font-family:'Playfair Display',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7a4f1c;font-weight:700;position:relative">Calendar</span>
+        </div>
+        <div onclick="togglePanel('directions')" class="info-card" style="cursor:pointer;background:linear-gradient(145deg,#fffdf8,#faf5ea);border:1.5px solid #d9ae3f;border-radius:14px;padding:24px 8px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 6px 20px rgba(184,134,11,0.12);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8860b,#d9ae3f,#b8860b,transparent)"></div>
+          <span class="info-icon" style="font-size:32px;position:relative">📍</span>
+          <span class="info-label" style="font-family:'Playfair Display',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7a4f1c;font-weight:700;position:relative">Directions</span>
+        </div>
+        <div onclick="togglePanel('contacts')" class="info-card" style="cursor:pointer;background:linear-gradient(145deg,#fffdf8,#faf5ea);border:1.5px solid #d9ae3f;border-radius:14px;padding:24px 8px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 6px 20px rgba(184,134,11,0.12);position:relative;overflow:hidden;transition:transform 0.3s ease,box-shadow 0.3s ease">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#b8860b,#d9ae3f,#b8860b,transparent)"></div>
+          <span class="info-icon" style="font-size:32px;position:relative">📞</span>
+          <span class="info-label" style="font-family:'Playfair Display',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7a4f1c;font-weight:700;position:relative">Contact</span>
+        </div>
+      </div>
+
+      <!-- Calendar panel -->
+      <div class="expand-panel" id="panelCalendar">
+        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony+-+Arvindran+%26+Sandhiya&dates=20261213T020000Z/20261213T033000Z&details=Wedding+Ceremony&location=Parish+Hall,+Sungai+Petani" target="_blank" rel="noopener" class="expand-link"><span class="expand-icon">📅</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Wedding Ceremony</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">Sun, 13 Dec 2026 · 10:00 a.m.</div></div></a>
+        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Dinner+Reception+-+Arvindran+%26+Sandhiya&dates=20261219T113000Z/20261220T013000Z&details=Dinner+Reception&location=Kelantan+Chinese+Chamber" target="_blank" rel="noopener" class="expand-link"><span class="expand-icon">📅</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Dinner Reception</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">Sat, 19 Dec 2026 · 7:30 p.m.</div></div></a>
+      </div>
+
+      <!-- Directions panel -->
+      <div class="expand-panel" id="panelDirections">
+        <a href="https://www.google.com/maps/search/?api=1&query=Parish%20Hall%2C%20No.115%2C%20Jalan%20Kolam%20Air%2C%2008000%20Sungai%20Petani%2C%20Kedah" target="_blank" rel="noopener" class="expand-link"><span class="expand-icon">📍</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Parish Hall</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">Sungai Petani, Kedah</div></div></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Kelantan%20Chinese%20Chamber%20of%20Commerce%2C%20Kota%20Bharu" target="_blank" rel="noopener" class="expand-link"><span class="expand-icon">📍</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Kelantan Chinese Chamber</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">Kota Bharu, Kelantan</div></div></a>
+      </div>
+
+      <!-- Contacts panel -->
+      <div class="expand-panel" id="panelContacts">
+        <a href="tel:+60139393641" class="expand-link"><span class="expand-icon">📞</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Subra</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">013-939 3641</div></div></a>
+        <a href="tel:+60109246525" class="expand-link"><span class="expand-icon">📞</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Sandhiya</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">010-924 6525</div></div></a>
+        <a href="tel:+60108260160" class="expand-link"><span class="expand-icon">📞</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Previn</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">010-826 0160</div></div></a>
+        <a href="tel:+60109125876" class="expand-link"><span class="expand-icon">📞</span><div style="text-align:left"><div style="color:#5c1322;font-weight:600;font-size:14px">Arvin</div><div style="color:#7a4f1c;font-size:12px;margin-top:2px">010-912 5876</div></div></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><div class="bar"></div><div class="shimmer"></div></div>
+
+  <!-- ===== RSVP ===== -->
+  <div data-s="rsvp" style="min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(168deg,#faf6ec 0%,#f5edd5 40%,#f0e4c4 100%);padding:50px 24px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.25);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:14px;border:1px solid rgba(184,134,11,0.12);border-radius:4px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+      <div style="position:absolute;width:3px;height:3px;background:#d9ae3f;border-radius:50%;top:15%;left:20%;animation:goldDust 6s ease-in-out infinite;opacity:0.4"></div>
+      <div style="position:absolute;width:2px;height:2px;background:#e8c771;border-radius:50%;top:60%;right:15%;animation:goldDust 8s ease-in-out 2s infinite;opacity:0.3"></div>
+      <div style="position:absolute;width:4px;height:4px;background:#b8860b;border-radius:50%;bottom:20%;left:70%;animation:goldDust 7s ease-in-out 1s infinite;opacity:0.35"></div>
+    </div>
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:12px;left:12px;width:55px;height:55px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;top:12px;right:12px;width:55px;height:55px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none;transform:scaleX(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:12px;left:12px;width:55px;height:55px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none;transform:scaleY(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:12px;right:12px;width:55px;height:55px;object-fit:contain;mix-blend-mode:multiply;opacity:0.35;pointer-events:none;transform:scale(-1,-1)" alt="">
+    <img src="./assets/ganesha-gold-transparent.png" style="position:absolute;top:50%;left:50%;width:160px;height:160px;transform:translate(-50%,-50%);opacity:0.04;pointer-events:none" alt="">
+
+    <!-- RSVP header -->
+    <div style="position:relative;z-index:2;margin-bottom:8px">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px">
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#d9ae3f)"></div>
+        <div style="font-family:'EB Garamond',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#b8860b;font-weight:600">Kindly Respond</div>
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,#d9ae3f,transparent)"></div>
+      </div>
+      <div class="rsvp-title" style="font-family:'Playfair Display',serif;font-size:28px;color:#5c1322;font-weight:700;letter-spacing:1px">RSVP</div>
+      <div class="rsvp-subtitle" style="font-family:'Cormorant Garamond',serif;font-size:13px;color:#9a7a2e;font-style:italic;margin-top:4px">We would be honoured by your presence</div>
+    </div>
+
+    <!-- RSVP form -->
+    <div class="rsvp-form" style="position:relative;z-index:2;width:min(340px,85vw);background:rgba(255,253,248,0.7);border:1.5px solid rgba(184,134,11,0.2);border-radius:16px;padding:28px 24px;backdrop-filter:blur(6px);margin-top:12px">
+
+      <!-- Success state (hidden by default) -->
+      <div id="rsvpSuccess" style="display:none;text-align:center;padding:20px 0">
+        <div style="font-size:48px;margin-bottom:12px;animation:scaleIn 0.5s ease-out">✨</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:#5c1322;font-weight:700">Thank You!</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#7a4f1c;margin-top:8px;line-height:1.6;font-style:italic">Your response has been recorded.<br>We look forward to celebrating with you!</div>
+        <div style="font-family:'Noto Sans Malayalam',serif;font-size:13px;color:#b8860b;margin-top:12px;font-weight:700">നന്ദി 🙏</div>
+      </div>
+
+      <!-- Form (shown by default) -->
+      <div id="rsvpFormContent">
+        <div style="margin-bottom:20px;text-align:left">
+          <label style="display:block;font-family:'EB Garamond',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a6e3a;margin-bottom:6px;font-weight:600">Your Name</label>
+          <input type="text" id="rsvpNameInput" placeholder="Enter your full name" style="width:100%;padding:12px 16px;border:1.5px solid rgba(184,134,11,0.25);border-radius:10px;background:rgba(255,253,248,0.9);font-family:'Cormorant Garamond',serif;font-size:16px;color:#5c1322;outline:none;box-sizing:border-box;transition:border-color 0.3s">
+        </div>
+        <div style="margin-bottom:20px;text-align:left">
+          <label style="display:block;font-family:'EB Garamond',serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a6e3a;margin-bottom:10px;font-weight:600">Attending</label>
+
+          <div id="weddingCard" onclick="toggleRsvp('wedding')" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid rgba(184,134,11,0.3);border-radius:12px;background:rgba(255,253,248,0.5);margin-bottom:8px;transition:all 0.3s">
+            <div id="weddingCheck" style="width:24px;height:24px;border-radius:6px;border:2.5px solid #c4a44a;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#fff8ee;transition:all 0.3s"></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:#5c1322;font-weight:600">Wedding Ceremony</div><div style="font-family:'Cormorant Garamond',serif;font-size:12px;color:#7a4f1c;margin-top:2px">Sun, 13 Dec 2026 · Sungai Petani</div></div>
+          </div>
+
+          <div id="dinnerCard" onclick="toggleRsvp('dinner')" style="cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid rgba(184,134,11,0.3);border-radius:12px;background:rgba(255,253,248,0.5);transition:all 0.3s">
+            <div id="dinnerCheck" style="width:24px;height:24px;border-radius:6px;border:2.5px solid #c4a44a;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#fff8ee;transition:all 0.3s"></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:14px;color:#5c1322;font-weight:600">Dinner Reception</div><div style="font-family:'Cormorant Garamond',serif;font-size:12px;color:#7a4f1c;margin-top:2px">Sat, 19 Dec 2026 · Kota Bharu</div></div>
+          </div>
+        </div>
+
+        <div id="rsvpError" style="display:none;font-family:'Cormorant Garamond',serif;font-size:13px;color:#a03030;text-align:center;margin-bottom:12px;padding:8px;background:rgba(160,48,48,0.06);border-radius:8px"></div>
+
+        <button id="rsvpSubmitBtn" onclick="handleRsvpSubmit()" style="cursor:pointer;width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,#d9ae3f 0%,#b8860b 50%,#c9972c 100%);color:#fff;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;box-shadow:0 4px 15px rgba(184,134,11,0.3);transition:all 0.3s;position:relative;overflow:hidden">Send RSVP</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><div class="bar"></div><div class="shimmer"></div></div>
+
+  <!-- ===== CLOSING ===== -->
+  <div data-s="closing" style="min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(172deg,#f6efdc 0%,#f0e6cc 40%,#ecdfc0 70%,#e8dab5 100%);padding:60px 24px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:8px;border:2px solid rgba(184,134,11,0.25);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:14px;border:1px solid rgba(184,134,11,0.12);border-radius:4px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,248,220,0.3) 45%,transparent 55%);background-size:200% 100%;animation:shimmer 4s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(184,134,11,0.07) 100%);pointer-events:none"></div>
+    <div style="position:absolute;top:25%;left:18%;width:3px;height:3px;background:#d9ae3f;border-radius:50%;animation:goldDust 5s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;top:55%;right:20%;width:4px;height:4px;background:#b8860b;border-radius:50%;animation:goldDust 4.5s ease-in-out 2s infinite;pointer-events:none"></div>
+    <div style="position:absolute;top:70%;left:25%;width:3px;height:3px;background:#e8c771;border-radius:50%;animation:goldDust 5.5s ease-in-out 1s infinite;pointer-events:none"></div>
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;left:10px;width:70px;height:70px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scaleY(-1)" alt="">
+    <img src="./assets/peacock-corner.png" style="position:absolute;bottom:10px;right:10px;width:70px;height:70px;object-fit:contain;mix-blend-mode:multiply;opacity:0.3;pointer-events:none;transform:scale(-1,-1)" alt="">
+    <img src="./assets/ganesha.png" style="position:absolute;top:50%;left:50%;width:200px;height:200px;transform:translate(-50%,-50%);object-fit:contain;mix-blend-mode:multiply;opacity:0.04;pointer-events:none" alt="">
+
+    <div style="z-index:1;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:24px;animation:fadeSlideUp 0.6s ease-out both"><span style="width:45px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span><span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:6px;height:6px;border:1px solid #b8860b;border-radius:50%"></span><span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:45px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span></div>
+      <img src="./assets/ganesha-gold-transparent.png" style="width:110px;height:110px;object-fit:contain;pointer-events:none;margin-bottom:20px;animation:scaleIn 0.8s ease-out 0.2s both" alt="">
+      <div class="closing-text" data-reveal style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#7a4f1c;line-height:1.8;letter-spacing:0.5px">With love and blessings,<br>we look forward to<br>celebrating with you.</div>
+      <div class="closing-mal" data-reveal data-delay="1" style="margin-top:28px;font-family:'Noto Sans Malayalam',serif;color:#b8860b;font-size:17px;letter-spacing:1.5px;font-weight:700;text-shadow:0 1px 4px rgba(184,134,11,0.15)">സ്നേഹപൂര്‍വ്വം ക്ഷണിക്കുന്നു</div>
+      <div style="margin-top:24px;display:flex;align-items:center;gap:6px;animation:fadeSlideUp 0.6s ease-out 0.8s both"><span style="width:45px;height:1px;background:linear-gradient(90deg,transparent,#b8860b)"></span><span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:6px;height:6px;border:1px solid #b8860b;border-radius:50%"></span><span style="width:4px;height:4px;background:#d9ae3f;transform:rotate(45deg)"></span><span style="width:45px;height:1px;background:linear-gradient(90deg,#b8860b,transparent)"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// === STATE ===
+let opened = false;
+let muted = false;
+let rsvpWedding = false;
+let rsvpDinner = false;
+let rsvpSubmitting = false;
+let audio = null;
+
+// === AUDIO ===
+function ensureAudio() {
+  if (audio) return audio;
+  audio = document.createElement('audio');
+  audio.loop = true;
+  audio.preload = 'auto';
+  audio.src = './wedding-song.mp3';
+  audio.volume = 0;
+  return audio;
+}
+
+function toggleMute() {
+  if (!audio) return;
+  muted = !muted;
+  audio.muted = muted;
+  document.getElementById('musicIcon').textContent = muted ? '🔇' : '🔊';
+  document.getElementById('musicBtn').classList.toggle('playing', !muted);
+}
+
+// === ENVELOPE OPEN ===
+function handleOpen() {
+  if (opened) return;
+
+  // Break seal particles
+  const pc = document.getElementById('particlesContainer');
+  const dirs = ['translate(-30px,-40px)','translate(30px,-40px)','translate(-45px,-10px)','translate(45px,-10px)','translate(-25px,35px)','translate(25px,35px)','translate(0,-50px)','translate(0,45px)','translate(-40px,20px)','translate(40px,20px)','translate(-15px,-45px)','translate(15px,-45px)'];
+  dirs.forEach((d, i) => {
+    const p = document.createElement('div');
+    Object.assign(p.style, {
+      position:'absolute', left:'50%', top:'50%',
+      width: (i%3===0?6:4)+'px', height: (i%3===0?6:4)+'px',
+      borderRadius:'50%', background: i%2===0?'#d9ae3f':'#b8860b',
+      animation:'particle 0.6s ease-out forwards', animationDelay:(i*30)+'ms'
+    });
+    p.style.setProperty('--pdir', d);
+    pc.appendChild(p);
+  });
+
+  document.getElementById('sealContainer').classList.add('breaking');
+  document.getElementById('envelopeFlap').classList.add('open');
+
+  setTimeout(() => {
+    opened = true;
+    document.getElementById('envelopeView').style.display = 'none';
+    document.getElementById('invitationView').classList.add('show');
+    document.getElementById('musicBtn').style.display = 'flex';
+
+    // Play music
+    const a = ensureAudio();
+    a.volume = 0.5;
+    a.play().catch(() => {});
+    document.getElementById('musicBtn').classList.add('playing');
+
+    // Create confetti
+    createConfetti();
+
+    // Start systems
+    setupScrollReveal();
+    revealVisible();
+    setupPetals();
+    setTimeout(() => revealVisible(), 300);
+  }, 600);
+}
+
+// === CONFETTI ===
+function createConfetti() {
+  const c = document.getElementById('confettiContainer');
+  const colors = ['#d9ae3f','#b8860b','#e8c771','#f4d892','#c9972c'];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    const size = 3 + Math.random()*5;
+    const isRect = i%3===0;
+    Object.assign(el.style, {
+      position:'absolute', top:'-10px',
+      left:(5+Math.random()*90)+'%',
+      width:size+'px', height:isRect?size*1.5+'px':size+'px',
+      background:colors[i%colors.length],
+      borderRadius:isRect?'1px':'50%',
+      animation:'confettiFall '+(3+Math.random()*4)+'s ease-in '+(0.5+Math.random()*2)+'s forwards',
+      opacity:'0.8'
+    });
+    c.appendChild(el);
+  }
+}
+
+// === COUNTDOWN ===
+function updateCountdown() {
+  const target = new Date('2026-12-13T10:00:00+08:00').getTime();
+  const now = Date.now();
+  const diff = Math.max(0, target - now);
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cdDays').textContent = String(d).padStart(2,'0');
+  document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cdSecs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// === SCROLL REVEAL ===
+let observer;
+function setupScrollReveal() {
+  if (observer) observer.disconnect();
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+}
+function revealVisible() {
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  document.querySelectorAll('[data-reveal]:not(.revealed)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < vh * 0.94 && r.bottom > 0) el.classList.add('revealed');
+  });
+}
+
+// === SCROLL PROGRESS ===
+function updateProgress() {
+  const s = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+  const bar = document.querySelector('[data-scroll-progress]');
+  if (bar && h > 0) bar.style.width = Math.min(100, s / h * 100) + '%';
+}
+
+// === FEATHER DRAW ===
+function updateFeather() {
+  document.querySelectorAll('[data-feather-draw]').forEach(el => {
+    const svg = el.closest('svg');
+    if (!svg) return;
+    const r = svg.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+    const len = parseFloat(el.getAttribute('stroke-dasharray'));
+    el.style.strokeDashoffset = len * (1 - p);
+  });
+}
+
+// === SPARKLE TRAIL ===
+let lastSp = 0;
+function spark(x, y) {
+  if (Date.now() - lastSp < 60) return;
+  lastSp = Date.now();
+  const d = document.createElement('div');
+  const sz = 3 + Math.random()*5;
+  const cols = ['#d9ae3f','#e8c771','#b8860b','#f4d892'];
+  Object.assign(d.style, {
+    position:'fixed', left:x+'px', top:y+'px', width:sz+'px', height:sz+'px',
+    borderRadius:'50%', background:cols[Math.floor(Math.random()*4)],
+    pointerEvents:'none', zIndex:'9999',
+    animation:'sparkleTrail 0.8s ease-out forwards', transform:'translate(-50%,-50%)'
+  });
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 800);
+}
+window.addEventListener('mousemove', e => spark(e.clientX, e.clientY), {passive:true});
+window.addEventListener('touchmove', e => { const t = e.touches[0]; if (t) spark(t.clientX, t.clientY); }, {passive:true});
+
+// === PETALS ===
+let petalInt;
+function setupPetals() {
+  if (petalInt) clearInterval(petalInt);
+  petalInt = setInterval(() => {
+    if (!opened) return;
+    const c = document.getElementById('petalContainer');
+    if (!c || c.children.length > 12) return;
+    const p = document.createElement('div');
+    const sz = 6 + Math.random()*8;
+    const dur = 8 + Math.random()*6;
+    const cols = ['rgba(255,182,193,0.6)','rgba(255,200,180,0.5)','rgba(255,220,200,0.4)','rgba(232,199,113,0.4)','rgba(255,240,220,0.5)'];
+    Object.assign(p.style, {
+      position:'absolute', left:Math.random()*100+'%', top:'-20px',
+      width:sz+'px', height:sz*0.7+'px',
+      background:cols[Math.floor(Math.random()*cols.length)],
+      borderRadius:'50% 0 50% 50%', pointerEvents:'none',
+      animation:'petalFall '+dur+'s ease-in forwards'
+    });
+    c.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000 + 100);
+  }, 1200);
+}
+
+// === SHAKE FOR BLESSING ===
+let lastShake = 0;
+if (window.DeviceMotionEvent) {
+  window.addEventListener('devicemotion', e => {
+    const a = e.accelerationIncludingGravity;
+    if (!a) return;
+    if (Math.abs(a.x)+Math.abs(a.y)+Math.abs(a.z) > 45 && Date.now()-lastShake > 4000) {
+      lastShake = Date.now();
+      const overlay = document.getElementById('blessingOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => { overlay.style.display = 'none'; }, 4000);
+    }
+  }, {passive:true});
+}
+
+// === SCROLL HANDLER ===
+let scrollTick = false;
+function onScroll() {
+  if (scrollTick) return;
+  scrollTick = true;
+  requestAnimationFrame(() => {
+    revealVisible();
+    updateProgress();
+    updateFeather();
+    scrollTick = false;
+  });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', onScroll, {passive:true});
+
+// === INFO PANELS ===
+let activePanel = null;
+function togglePanel(name) {
+  const panels = ['calendar','directions','contacts'];
+  panels.forEach(p => {
+    const el = document.getElementById('panel' + p.charAt(0).toUpperCase() + p.slice(1));
+    if (p === name && activePanel !== name) {
+      el.classList.add('show');
+    } else {
+      el.classList.remove('show');
+    }
+  });
+  activePanel = activePanel === name ? null : name;
+}
+
+// === RSVP ===
+function toggleRsvp(type) {
+  if (type === 'wedding') {
+    rsvpWedding = !rsvpWedding;
+    updateRsvpCard('wedding', rsvpWedding);
+  } else {
+    rsvpDinner = !rsvpDinner;
+    updateRsvpCard('dinner', rsvpDinner);
+  }
+  document.getElementById('rsvpError').style.display = 'none';
+}
+
+function updateRsvpCard(type, checked) {
+  const card = document.getElementById(type + 'Card');
+  const check = document.getElementById(type + 'Check');
+  if (checked) {
+    card.style.borderColor = '#d9ae3f';
+    card.style.background = 'rgba(217,174,63,0.15)';
+    check.style.borderColor = '#b8860b';
+    check.style.background = 'linear-gradient(135deg,#e8c771,#d9ae3f)';
+    check.style.boxShadow = '0 2px 8px rgba(184,134,11,0.3)';
+    check.innerHTML = '<span style="color:#5c1322;font-size:15px;font-weight:900">✓</span>';
+  } else {
+    card.style.borderColor = 'rgba(184,134,11,0.3)';
+    card.style.background = 'rgba(255,253,248,0.5)';
+    check.style.borderColor = '#c4a44a';
+    check.style.background = '#fff8ee';
+    check.style.boxShadow = 'none';
+    check.innerHTML = '';
+  }
+}
+
+function handleRsvpSubmit() {
+  if (rsvpSubmitting) return;
+  const name = document.getElementById('rsvpNameInput').value.trim();
+  const errEl = document.getElementById('rsvpError');
+
+  if (!name) {
+    errEl.textContent = 'Please enter your name';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (!rsvpWedding && !rsvpDinner) {
+    errEl.textContent = 'Please select at least one occasion';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  rsvpSubmitting = true;
+  errEl.style.display = 'none';
+  document.getElementById('rsvpSubmitBtn').innerHTML = '<span style="display:inline-block;animation:pulse 1s ease-in-out infinite">Sending...</span>';
+
+  const occasions = [
+    rsvpWedding && 'Wedding Ceremony (13 Dec)',
+    rsvpDinner && 'Dinner Reception (19 Dec)'
+  ].filter(Boolean).join(', ');
+
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzuWCX2IvYNml75eo4f_LQp-eM-gjd03smWMiGyAaUWx2P8wL-IJGzGQYgaOoEs4GDH5Q/exec';
+  const ts = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' });
+  const params = '?name=' + encodeURIComponent(name) + '&occasions=' + encodeURIComponent(occasions) + '&timestamp=' + encodeURIComponent(ts);
+
+  const img = new Image();
+  img.onload = img.onerror = () => showRsvpSuccess();
+  img.src = SHEET_URL + params;
+
+  setTimeout(() => { if (rsvpSubmitting) showRsvpSuccess(); }, 3000);
+}
+
+function showRsvpSuccess() {
+  rsvpSubmitting = false;
+  document.getElementById('rsvpFormContent').style.display = 'none';
+  document.getElementById('rsvpSuccess').style.display = 'block';
+}
+
+// === INIT ===
+ensureAudio().load();
+</script>
+</body>
+</html>
