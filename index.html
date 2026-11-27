@@ -3599,7 +3599,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
             <!-- Number of Pax -->
             <div style="margin-bottom:20px; text-align:left;">
-              <label style="font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(184,134,11,0.7); letter-spacing:2px; text-transform:uppercase; display:block; margin-bottom:8px;">Number of Guests (Max 6 total)</label>
+              <label style="font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(184,134,11,0.7); letter-spacing:2px; text-transform:uppercase; display:block; margin-bottom:8px;">Number of Guests</label>
 
               <!-- Adults row -->
               <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border:1.5px solid rgba(184,134,11,0.2); border-radius:12px 12px 0 0; background:rgba(255,255,255,0.4);">
@@ -3623,7 +3623,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
               </div>
 
               <!-- Total display -->
-              <div id="pax-total-row" style="text-align:center; margin-top:6px; font-family:'Cormorant Garamond',serif; font-size:12px; color:#5c1322; opacity:0.7;">Total: <span id="pax-total" style="font-weight:700; color:#3a0f14;">1</span> / 6</div>
+              <div id="pax-total-row" style="text-align:center; margin-top:6px; font-family:'Cormorant Garamond',serif; font-size:12px; color:#5c1322; opacity:0.7;">Total: <span id="pax-total" style="font-weight:700; color:#3a0f14;">1</span></div>
             </div>
 
             <!-- Error Message -->
@@ -3864,26 +3864,19 @@ function totalGuests() { return rsvpPax + rsvpChildren; }
 
 function updatePaxButtons() {
   var minusBtn = document.getElementById('pax-minus');
-  var plusBtn = document.getElementById('pax-plus');
   var childMinus = document.getElementById('child-minus');
-  var childPlus = document.getElementById('child-plus');
   var total = totalGuests();
 
   minusBtn.style.opacity = rsvpPax <= 1 ? '0.3' : '1';
   minusBtn.style.cursor = rsvpPax <= 1 ? 'default' : 'pointer';
-  plusBtn.style.opacity = total >= 6 ? '0.3' : '1';
-  plusBtn.style.cursor = total >= 6 ? 'default' : 'pointer';
 
   childMinus.style.opacity = rsvpChildren <= 0 ? '0.3' : '1';
   childMinus.style.cursor = rsvpChildren <= 0 ? 'default' : 'pointer';
-  childPlus.style.opacity = total >= 6 ? '0.3' : '1';
-  childPlus.style.cursor = total >= 6 ? 'default' : 'pointer';
 
   document.getElementById('pax-total').textContent = total;
 }
 
 function incrementPax() {
-  if (totalGuests() >= 6) return;
   rsvpPax++;
   document.getElementById('pax-count').textContent = rsvpPax;
   updatePaxButtons();
@@ -3899,7 +3892,6 @@ function decrementPax() {
 }
 
 function incrementChild() {
-  if (totalGuests() >= 6) return;
   rsvpChildren++;
   document.getElementById('child-count').textContent = rsvpChildren;
   updatePaxButtons();
