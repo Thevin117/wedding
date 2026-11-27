@@ -3599,15 +3599,31 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
             <!-- Number of Pax -->
             <div style="margin-bottom:20px; text-align:left;">
-              <label style="font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(184,134,11,0.7); letter-spacing:2px; text-transform:uppercase; display:block; margin-bottom:8px;">Number of Guests (Max 6)</label>
-              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border:1.5px solid rgba(184,134,11,0.2); border-radius:12px; background:rgba(255,255,255,0.4);">
+              <label style="font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(184,134,11,0.7); letter-spacing:2px; text-transform:uppercase; display:block; margin-bottom:8px;">Number of Guests (Max 6 total)</label>
+
+              <!-- Adults row -->
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border:1.5px solid rgba(184,134,11,0.2); border-radius:12px 12px 0 0; background:rgba(255,255,255,0.4);">
                 <button type="button" id="pax-minus" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">−</button>
                 <div style="text-align:center;">
                   <div id="pax-count" style="font-family:'Playfair Display',serif; font-size:22px; color:#3a0f14; font-weight:700;">1</div>
-                  <div style="font-family:'Cormorant Garamond',serif; font-size:11px; color:#5c1322; opacity:0.6; letter-spacing:1px; text-transform:uppercase;">Pax</div>
+                  <div style="font-family:'Cormorant Garamond',serif; font-size:11px; color:#5c1322; opacity:0.6; letter-spacing:1px; text-transform:uppercase;">Adults</div>
                 </div>
                 <button type="button" id="pax-plus" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">+</button>
               </div>
+
+              <!-- Children row -->
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border:1.5px solid rgba(184,134,11,0.2); border-top:none; border-radius:0 0 12px 12px; background:rgba(255,248,230,0.5);">
+                <button type="button" id="child-minus" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">−</button>
+                <div style="text-align:center;">
+                  <div id="child-count" style="font-family:'Playfair Display',serif; font-size:22px; color:#3a0f14; font-weight:700;">0</div>
+                  <div style="font-family:'Cormorant Garamond',serif; font-size:11px; color:#5c1322; opacity:0.6; letter-spacing:1px; text-transform:uppercase;">Children</div>
+                  <div style="font-family:'Cormorant Garamond',serif; font-size:10px; color:#8b6914; opacity:0.8; letter-spacing:0.5px; margin-top:1px;">Below 12 years old</div>
+                </div>
+                <button type="button" id="child-plus" style="width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(184,134,11,0.4); background:rgba(255,255,255,0.7); color:#8b6914; font-family:'Playfair Display',serif; font-size:20px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:opacity 0.3s;">+</button>
+              </div>
+
+              <!-- Total display -->
+              <div id="pax-total-row" style="text-align:center; margin-top:6px; font-family:'Cormorant Garamond',serif; font-size:12px; color:#5c1322; opacity:0.7;">Total: <span id="pax-total" style="font-weight:700; color:#3a0f14;">1</span> / 6</div>
             </div>
 
             <!-- Error Message -->
@@ -3841,19 +3857,33 @@ class Component extends DCLogic {
 var rsvpWedding = false;
 var rsvpDinner = false;
 var rsvpPax = 1;
+var rsvpChildren = 0;
 var rsvpSubmitting = false;
+
+function totalGuests() { return rsvpPax + rsvpChildren; }
 
 function updatePaxButtons() {
   var minusBtn = document.getElementById('pax-minus');
   var plusBtn = document.getElementById('pax-plus');
+  var childMinus = document.getElementById('child-minus');
+  var childPlus = document.getElementById('child-plus');
+  var total = totalGuests();
+
   minusBtn.style.opacity = rsvpPax <= 1 ? '0.3' : '1';
   minusBtn.style.cursor = rsvpPax <= 1 ? 'default' : 'pointer';
-  plusBtn.style.opacity = rsvpPax >= 6 ? '0.3' : '1';
-  plusBtn.style.cursor = rsvpPax >= 6 ? 'default' : 'pointer';
+  plusBtn.style.opacity = total >= 6 ? '0.3' : '1';
+  plusBtn.style.cursor = total >= 6 ? 'default' : 'pointer';
+
+  childMinus.style.opacity = rsvpChildren <= 0 ? '0.3' : '1';
+  childMinus.style.cursor = rsvpChildren <= 0 ? 'default' : 'pointer';
+  childPlus.style.opacity = total >= 6 ? '0.3' : '1';
+  childPlus.style.cursor = total >= 6 ? 'default' : 'pointer';
+
+  document.getElementById('pax-total').textContent = total;
 }
 
 function incrementPax() {
-  if (rsvpPax >= 6) return;
+  if (totalGuests() >= 6) return;
   rsvpPax++;
   document.getElementById('pax-count').textContent = rsvpPax;
   updatePaxButtons();
@@ -3864,6 +3894,22 @@ function decrementPax() {
   if (rsvpPax <= 1) return;
   rsvpPax--;
   document.getElementById('pax-count').textContent = rsvpPax;
+  updatePaxButtons();
+  clearError();
+}
+
+function incrementChild() {
+  if (totalGuests() >= 6) return;
+  rsvpChildren++;
+  document.getElementById('child-count').textContent = rsvpChildren;
+  updatePaxButtons();
+  clearError();
+}
+
+function decrementChild() {
+  if (rsvpChildren <= 0) return;
+  rsvpChildren--;
+  document.getElementById('child-count').textContent = rsvpChildren;
   updatePaxButtons();
   clearError();
 }
@@ -3944,7 +3990,7 @@ function handleRsvpSubmit() {
 
   var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzuWCX2IvYNml75eo4f_LQp-eM-gjd03smWMiGyAaUWx2P8wL-IJGzGQYgaOoEs4GDH5Q/exec';
   var ts = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' });
-  var params = '?name=' + encodeURIComponent(name) + '&occasions=' + encodeURIComponent(occasionStr) + '&pax=' + encodeURIComponent(rsvpPax) + '&timestamp=' + encodeURIComponent(ts);
+  var params = '?name=' + encodeURIComponent(name) + '&occasions=' + encodeURIComponent(occasionStr) + '&pax=' + encodeURIComponent(rsvpPax) + '&children=' + encodeURIComponent(rsvpChildren) + '&timestamp=' + encodeURIComponent(ts);
 
   var img = new Image();
   img.onload = img.onerror = function() {
@@ -3974,6 +4020,8 @@ document.addEventListener('click', function(e) {
   else if (e.target.closest('#dinner-card')) toggleDinner();
   else if (e.target.closest('#pax-minus')) decrementPax();
   else if (e.target.closest('#pax-plus')) incrementPax();
+  else if (e.target.closest('#child-minus')) decrementChild();
+  else if (e.target.closest('#child-plus')) incrementChild();
   else if (e.target.closest('#rsvp-submit')) handleRsvpSubmit();
 });
 document.addEventListener('focusin', function(e) {
